@@ -6,6 +6,7 @@ def initialize(discount = 0)
 @discount = discount
 @items = []
 @last_transaction = last_transaction
+@prices = []
 end
 
 def total 
@@ -17,6 +18,8 @@ def add_item(title, price, quantity = 1)
   @price = price
  @total = @price * quantity + @total
  quantity.times {|title| @items << @title}
+ @prices << @price * quantity
+ @last_transaction = @prices[-1]
 end
 
 def apply_discount
@@ -37,7 +40,7 @@ end
 
 def void_last_transaction
 # need to subtract the price of the last item from the total 
-  
+if @prices
 end
 
 end
