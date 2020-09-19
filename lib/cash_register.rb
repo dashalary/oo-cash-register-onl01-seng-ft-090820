@@ -1,10 +1,12 @@
 class CashRegister
-  attr_accessor :total, :discount, :title, :price, :quantity
- @@all = []
+  attr_accessor :total, :discount, :title, :price, :quantity, :last_transaction 
  
 def initialize(discount = 0)
 @total = 0
 @discount = discount
+@items = []
+@last_transaction = last_transaction
+@prices = []
 end
 
 def total 
@@ -15,6 +17,9 @@ def add_item(title, price, quantity = 1)
   @title = title 
   @price = price
  @total = @price * quantity + @total
+ quantity.times {|title| @items << @title}
+ @prices << @price * quantity
+ @last_transaction = @prices[-1]
 end
 
 def apply_discount
@@ -30,9 +35,16 @@ end
 end
 
 def items 
-@@all << @title
+@items
 end 
 
-
+def void_last_transaction
+# need to subtract the price of the last item from the total 
+if @prices.empty? == false 
+  @total = @total - @last_transaction
+else 
+  @total = 0.0 
+end 
+end
 
 end
