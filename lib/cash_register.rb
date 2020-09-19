@@ -43,7 +43,8 @@ def void_last_transaction
 if @prices.empty? == false 
   @total = @total - @last_transaction
 else 
-  
+  @total = 0.0 
+end 
 end
 
 end
