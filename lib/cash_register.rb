@@ -40,7 +40,7 @@ end
 
 def void_last_transaction
 # need to subtract the price of the last item from the total 
-if @prices
+if @prices.empty?
 end
 
 end
